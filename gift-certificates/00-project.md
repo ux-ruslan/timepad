@@ -25,10 +25,12 @@
 
 При конфликте документов приоритет следующий:
 1. `04-decisions.md`
-2. `02-requirements.md`
+2. `02-roadmap.md`
 3. `03-user-flows.md`
-4. `05-open-questions.md`
-5. `06-roadmap.md`
-6. `research/` и `competitors/`
+4. `08-refund-flow.md`
+5. `05-open-questions.md`
+6. `06-roadmap.md`
+7. `research/` и `competitors/`
 
 Открытый вопрос, предложение или исследование не является решением.
+Схема возврата сертификата и смешанного возврата заказа: `08-refund-flow.md`.
