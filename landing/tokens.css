@@ -1,0 +1,85 @@
+/*
+  Figma variables and styles used on Landing1
+  (Подарочные сертификаты, node 391:11292)
+*/
+
+:root {
+  /* Spacing variables */
+  --2: 2px;
+  --8: 8px;
+  --10: 10px;
+  --12: 12px;
+  --40: 40px;
+
+  /* Color variables */
+  --text-primary: #1c1c1c;
+  --text-inverted: #f4f2f8;
+  --constant-dark-purple: #7d58ff;
+  --constant-darkest-chocolate: #281621;
+  --constant-normal-chocolate: #4e3b47;
+  --constant-greyscale-0: #ffffff;
+  --controls-primary-active: #7d58ff;
+  --controls-tertiary-active: #f4f2f8;
+  --background-primary: #ffffff;
+
+  /* Paint styles used in the file (not variables) */
+  --style-white: #ffffff;
+  --style-gray-50-20: rgb(128 128 128 / 20%);
+
+  /* Hardcoded values from Figma (no variable bound) */
+  --chip-border: #e6e6e6;
+  --card-mint: #c8ffb1;
+  --avatar-letter: #aaaaaa;
+}
+
+@font-face {
+  font-family: "Input Sans Narrow";
+  src: url("assets/fonts/InputSansNarrow-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Backwards Sans";
+  src: url("assets/fonts/TT-Backwards-Sans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Paragraph/P4 Regular */
+.style-p4-regular {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+/* Paragraph/P3 Regular */
+.style-p3-regular {
+  font-family: Inter, sans-serif;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+/* Paragraph/P4 Bold */
+.style-p4-bold {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0;
+}
+
+/* Desktop/Button 14-22 */
+.style-desktop-button {
+  font-family: "Input Sans Narrow", Inter, sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+  letter-spacing: 0.00933333px;
+}
