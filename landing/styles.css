@@ -279,7 +279,7 @@ img {
   text-overflow: ellipsis;
 }
 
-/* Carousel */
+/* Carousel: only the colored certificates move */
 .carousel {
   position: absolute;
   top: 0;
@@ -288,80 +288,90 @@ img {
   height: 820px;
 }
 
-.card-side {
+.certs {
   position: absolute;
-  top: 50%;
+  top: 340px;
+  left: 0;
+  z-index: 1;
+  width: 1848px;
+  height: 272px;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+
+.certs:active {
+  cursor: grabbing;
+}
+
+.certs__track {
+  display: flex;
+  align-items: center;
+  gap: 36px;
+  height: 272px;
+  transform: translateX(-10px);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.certs__track.is-dragging {
+  transition: none;
+}
+
+.cert {
+  position: relative;
+  flex: 0 0 322px;
   width: 322px;
   height: 200px;
   overflow: hidden;
   border-radius: 16px;
   opacity: 0.7;
-  transform: translateY(-50%);
+  transition:
+    width 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    flex-basis 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    height 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    border-radius 0.45s cubic-bezier(0.22, 1, 0.36, 1),
+    opacity 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.card-side img {
-  width: 322px;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 16px;
-}
-
-.card-side--mauve {
-  top: calc(50% + 66px);
-  left: -10px;
-}
-
-.card-side--blue {
-  top: calc(50% + 66px);
-  left: 348px;
-}
-
-.card-side--olive {
-  top: calc(50% + 67px);
-  left: 1180px;
-}
-
-.card-side--mint {
-  top: calc(50% + 67px);
-  left: 1538px;
-}
-
-.card-side--mint .card-side__fill {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  width: 322px;
-  height: 200px;
-  background: var(--card-mint);
-  border-radius: 14px;
-  transform: translateY(-50%);
-}
-
-.card-side__logo {
-  position: absolute;
-  top: 6.32px;
-  left: 18.04px;
-  width: 186px;
-  height: 52.2px;
-}
-
-/* Active ticket */
-.ticket {
-  position: absolute;
-  top: 340px;
-  left: calc(50% + 1px);
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-  width: 438px;
-  transform: translateX(-50%);
-}
-
-.ticket__art {
+.cert.is-active {
+  flex-basis: 438px;
   width: 438px;
   height: 272px;
-  object-fit: cover;
   border-radius: 24px 24px 0 0;
+  opacity: 1;
+}
+
+.cert img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.cert--mint .cert__fill {
+  position: absolute;
+  inset: 0;
+  background: var(--card-mint);
+  border-radius: inherit;
+}
+
+.cert--mint .cert__logo {
+  position: absolute;
+  top: 3.16%;
+  left: 5.6%;
+  width: 57.76%;
+  height: 26.1%;
+  object-fit: contain;
+}
+
+.stub {
+  position: absolute;
+  top: 612px;
+  left: calc(50% + 1px);
+  z-index: 2;
+  width: 438px;
+  transform: translateX(-50%);
 }
 
 .ticket__panel {
@@ -372,20 +382,21 @@ img {
   border-radius: 0 0 24px 24px;
 }
 
-.ticket__notch {
+.stub__notch {
   position: absolute;
-  top: 254px;
+  top: -18px;
+  z-index: 3;
   width: 36px;
   height: 36px;
   border-radius: 1000px;
   background: var(--constant-darkest-chocolate);
 }
 
-.ticket__notch--left {
+.stub__notch--left {
   left: -18px;
 }
 
-.ticket__notch--right {
+.stub__notch--right {
   left: 425px;
 }
 

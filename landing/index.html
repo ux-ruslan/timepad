@@ -115,34 +115,43 @@
       </p>
 
       <div class="carousel" data-node-id="391:11294">
-        <div class="card-side card-side--mauve">
-          <img src="assets/cards/mauve.png" width="322" height="200" alt="" />
-        </div>
-        <div class="card-side card-side--blue">
-          <img src="assets/cards/blue.png" width="322" height="200" alt="" />
-        </div>
-        <div class="card-side card-side--olive">
-          <img src="assets/cards/olive.png" width="322" height="200" alt="" />
-        </div>
-        <div class="card-side card-side--mint">
-          <div class="card-side__fill"></div>
-          <img
-            class="card-side__logo"
-            src="assets/cards/green-logo.svg"
-            width="186"
-            height="52"
-            alt=""
-          />
+        <div
+          class="certs"
+          data-certs
+          tabindex="0"
+          role="region"
+          aria-roledescription="карусель"
+          aria-label="Дизайн сертификата"
+        >
+          <div class="certs__track" data-track>
+            <button class="cert" type="button" data-cert aria-label="Счастливых моментов">
+              <img src="assets/cards/mauve.png" width="322" height="200" alt="" />
+            </button>
+            <button class="cert" type="button" data-cert aria-label="Поздравляем">
+              <img src="assets/cards/blue.png" width="322" height="200" alt="" />
+            </button>
+            <button class="cert is-active" type="button" data-cert aria-label="С любовью" aria-current="true">
+              <img src="assets/cards/pink.png" width="438" height="272" alt="" />
+            </button>
+            <button class="cert" type="button" data-cert aria-label="Это тебе">
+              <img src="assets/cards/olive.png" width="322" height="200" alt="" />
+            </button>
+            <button class="cert cert--mint" type="button" data-cert aria-label="Мятный сертификат">
+              <span class="cert__fill"></span>
+              <img
+                class="cert__logo"
+                src="assets/cards/green-logo.svg"
+                width="186"
+                height="52"
+                alt=""
+              />
+            </button>
+          </div>
         </div>
 
-        <article class="ticket" data-node-id="391:11295">
-          <img
-            class="ticket__art"
-            src="assets/cards/pink.png"
-            width="438"
-            height="272"
-            alt="Сертификат «С любовью»"
-          />
+        <div class="stub" data-node-id="391:11297">
+          <span class="stub__notch stub__notch--left" aria-hidden="true"></span>
+          <span class="stub__notch stub__notch--right" aria-hidden="true"></span>
           <div class="ticket__panel">
             <div class="chips" role="group" aria-label="Номинал">
               <button class="chip style-p4-regular" type="button" data-value="1000">1 000 ₽</button>
@@ -167,9 +176,7 @@
               <span class="checkout__label style-p4-bold">Оформить</span>
             </button>
           </div>
-          <span class="ticket__notch ticket__notch--left" aria-hidden="true"></span>
-          <span class="ticket__notch ticket__notch--right" aria-hidden="true"></span>
-        </article>
+        </div>
       </div>
     </div>
     <script src="main.js"></script>
