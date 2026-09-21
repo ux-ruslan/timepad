@@ -2,10 +2,19 @@ const SIDE = 322;
 const ACTIVE = 438;
 const GAP = 36;
 const PITCH = (ACTIVE + SIDE) / 2 + GAP;
-const CENTER_X = 706 + ACTIVE / 2;
+const CENTER_LEFT = 706;
+const CENTER_X = CENTER_LEFT + ACTIVE / 2;
 const SETTLE_MS = 300;
 const RUBBER = 0.32;
 const FLICK_VELOCITY = 0.55;
+
+// Figma 1085:35586 — three stacked certificates, unrotated top-left
+// relative to the front card (490, 303) inside the 1440 frame.
+const FAN = {
+  "-1": { dx: -21.16796875, dy: 30.009765625, rot: -6, z: 1 },
+  0: { dx: 0, dy: 0, rot: 0, z: 3 },
+  1: { dx: 20.829513549804688, dy: -23.279399871826172, rot: 4.99, z: 2 },
+};
 
 const chips = document.querySelectorAll(".chip");
 const qtyValue = document.querySelector("[data-qty-value]");
@@ -84,19 +93,35 @@ function layout(p) {
   const focus = centers[leftIndex] + (centers[rightIndex] - centers[leftIndex]) * mix;
   const shift = CENTER_X - focus;
 
+  const restP = Math.round(clamp(p, 0, lastIndex));
+  const restMix = 1 - Math.min(1, Math.abs(p - restP) * 2);
+
   certs.forEach((card, index) => {
     const t = weights[index];
-    const scale = widths[index] / ACTIVE;
-    const left = centers[index] + shift - ACTIVE / 2;
+    let scale = widths[index] / ACTIVE;
+    let left = centers[index] + shift - ACTIVE / 2;
+    let top = 0;
+    let rot = 0;
+    const fan = FAN[index - restP];
+    if (fan && restMix > 0) {
+      left += (CENTER_LEFT + fan.dx - left) * restMix;
+      top = fan.dy * restMix;
+      rot = fan.rot * restMix;
+      scale += (1 - scale) * restMix;
+    }
     const visualRadius = 16 / scale;
     const seat = clamp((t - 0.82) / 0.18, 0, 1);
     const topRadius = visualRadius + (24 - visualRadius) * seat;
     const bottomRadius = visualRadius * (1 - seat);
 
-    card.style.transform = `translate3d(${left}px, 0, 0) scale(${scale})`;
+    card.style.transform = `translate3d(${left}px, ${top}px, 0) scale(${scale})`;
     card.style.opacity = String(0.7 + 0.3 * t);
     card.style.borderRadius = `${topRadius}px ${topRadius}px ${bottomRadius}px ${bottomRadius}px`;
-    card.style.zIndex = String(Math.round(t * 100));
+    card.style.zIndex = fan && restMix > 0.5 ? String(fan.z) : String(Math.round(t * 100));
+    const face = card.querySelector("[data-face]");
+    if (face) {
+      face.style.transform = `rotate(${rot}deg)`;
+    }
     card.classList.toggle("is-active", t > 0.5);
     card.toggleAttribute("aria-current", t > 0.92);
   });
